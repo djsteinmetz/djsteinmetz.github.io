@@ -1,0 +1,50 @@
+p.red {
+    color: red;
+}
+
+p.blue {
+    color: blue;
+}
+
+p.green {
+    color: green;
+}
+
+p.orange {
+    color: orange;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p.bigText {
+    font-size: 30px;
+}
+
+p.tinyText {
+    font-size: 5px;
+}
+
+p.center {
+    text-align: center;
+}
+
+p.strong {
+    font-weight: bolder;
+}
+
+p.fancyFont {
+    font-family: fantasy;
+}
+
+p.styledFont {
+    font-weight: bolder;
+}
+
+#styledImage {
+    border-color: #296fb4;
+    border-width: 10px;
+    border-style: dashed;
+    offset-block-end: 10px;
+}
