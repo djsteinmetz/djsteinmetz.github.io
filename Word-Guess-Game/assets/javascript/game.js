@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    var characterChoices = ["harry", "voldemort", "hermione", "ron", "dumbledore", "hagrid"]
-    const maxGuesses = 10
+    var characterChoices = ["harry potter", "voldemort", "hermione granger", "ronald weasley", "albus dumbledore", "rubeus hagrid", "severus snape"]
+    const maxGuesses = 5
 
     var guessedLetters = []
     var guessingWord = []
@@ -10,27 +10,30 @@ $(document).ready(function() {
     var wins = 0
 
     // Set default image display
-    var image = "http://via.placeholder.com/350x450";
+    var image = "assets/images/mystery-person.jpg"
 
     function changeImageDisplay() {
-        if(characterToMatch.toLowerCase() === "harry") {
-            image = "assets/images/Harry-Potter-in-cupboard-Jim-Kay-RGB-636x800.jpg";
+        if(characterToMatch.toLowerCase() === "harry potter") {
+            image = "assets/images/Harry-Potter-in-cupboard-Jim-Kay-RGB-636x800.jpg"
         }
         else if(characterToMatch.toLowerCase() === "voldemort") {
-            image = "assets/images/HP1_Voldemort.jpg";
+            image = "assets/images/HP1_Voldemort.jpg"
         }
-        else if(characterToMatch.toLowerCase() === "hermione") {
-            image = "assets/images/Hermione_-_Jim_Kay_1_.jpg";
+        else if(characterToMatch.toLowerCase() === "hermione granger") {
+            image = "assets/images/Hermione_-_Jim_Kay_1_.jpg"
         }
-        else if(characterToMatch.toLowerCase() === "ron") {
-            image = "assets/images/Ron_-_Jim_Kay.jpg";
+        else if(characterToMatch.toLowerCase() === "ronald weasley") {
+            image = "assets/images/Ron_-_Jim_Kay.jpg"
         }
-        else if(characterToMatch.toLowerCase() === "dumbledore") {
-            image = "assets/images/Pottermore_CharacterPortraits_Dumbledore_Colour_05JH.jpg";
+        else if(characterToMatch.toLowerCase() === "albus dumbledore") {
+            image = "assets/images/Pottermore_CharacterPortraits_Dumbledore_Colour_05JH.jpg"
         }
-        else if(characterToMatch.toLowerCase() === "hagrid") {
-            image = "assets/images/Hagrid_-_Jim_Kay_1_.jpg";
-        };
+        else if(characterToMatch.toLowerCase() === "rubeus hagrid") {
+            image = "assets/images/Hagrid_-_Jim_Kay_1_.jpg"
+        }
+        else if(characterToMatch.toLowerCase() === "severus snape") {
+            image = "assets/images/Pottermore_CharacterPortraits_Snape_Colour_04JH.jpg"
+        }
     }
 
     resetGame()
@@ -57,7 +60,9 @@ $(document).ready(function() {
                     // Increase win #
                     wins++
                     changeImageDisplay()
-                    setTimeout(function() { resetGame(); }, 5000)
+                    setTimeout(function() { 
+                        resetGame(); 
+                    }, 5000)
                 }
             }
         }
@@ -68,7 +73,9 @@ $(document).ready(function() {
                 numGuess--
             }
             if(numGuess===0) {
-                resetGame()
+                setTimeout(function() {
+                    resetGame();
+                }, 5000)
             }
         } 
 
@@ -87,7 +94,7 @@ $(document).ready(function() {
     }
 
     function resetGame() {
-        image = "http://via.placeholder.com/350x450"
+        image = "assets/images/mystery-person.jpg"
         numGuess=maxGuesses
         console.log(numGuess)
         // Get new Character
@@ -100,7 +107,12 @@ $(document).ready(function() {
 
         // Reset the word
         for (var i=0; i<characterToMatch.length; i++) {
-            guessingWord.push("_")
+            if(characterToMatch[i] === " ") {
+                guessingWord.push(" ")
+            }
+            else {
+                guessingWord.push("_")
+            }
         }
         console.log(guessingWord)
         console.log(image)
@@ -111,12 +123,12 @@ $(document).ready(function() {
     updateDisplay()
 
     function updateDisplay() {
-        document.getElementById("lettersGuessed").innerText = guessedLetters.join("")
+        document.getElementById("lettersGuessed").innerText = guessedLetters.join(" ")
         document.getElementById("remainingGuesses").innerText = numGuess
-        document.getElementById("currentWord").innerText = guessingWord.join(" ")
+        document.getElementById("currentWord").innerHTML = guessingWord.join("")
         document.getElementById("totalWins").innerText = wins
-        $("#potterImage").attr("src", "http://via.placeholder.com/350x450")
-        document.getElementById("nameDisplay").innerText = "GUESS THE CHARACTER"
+        $("#potterImage").attr("src", "assets/images/mystery-person.jpg")
+        document.getElementById("nameDisplay").innerText = "GUESS THE CHARACTER!"
     }
 
 })
