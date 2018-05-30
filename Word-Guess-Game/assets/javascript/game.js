@@ -73,9 +73,7 @@ $(document).ready(function() {
                 numGuess--
             }
             if(numGuess===0) {
-                setTimeout(function() {
-                    resetGame();
-                }, 5000)
+                resetGame();
             }
         } 
 
@@ -96,10 +94,10 @@ $(document).ready(function() {
     function resetGame() {
         image = "assets/images/mystery-person.jpg"
         numGuess=maxGuesses
-        console.log(numGuess)
+        //console.log(numGuess)
         // Get new Character
         characterToMatch=characterChoices[Math.floor(Math.random() * characterChoices.length)].toUpperCase()
-        console.log(characterToMatch)
+        //console.log(characterToMatch)
 
         // Reset word arrays
         guessedLetters=[]
@@ -114,8 +112,8 @@ $(document).ready(function() {
                 guessingWord.push("_")
             }
         }
-        console.log(guessingWord)
-        console.log(image)
+        // console.log(guessingWord)
+        // console.log(image)
 
         updateDisplay()
     }
