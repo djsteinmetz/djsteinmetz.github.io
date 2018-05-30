@@ -73,7 +73,10 @@ $(document).ready(function() {
                 numGuess--
             }
             if(numGuess===0) {
-                resetGame();
+                guessingWord = characterToMatch.split()
+                setTimeout(function() { 
+                    resetGame(); 
+                }, 5000)
             }
         } 
 
