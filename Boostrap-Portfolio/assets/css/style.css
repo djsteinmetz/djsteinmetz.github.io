@@ -225,8 +225,12 @@ body {
     padding: 10px 0px 0px 0px;
 }
 
+#hangman {
+    background-image: url(../images/hogwarts-background.jpg);
+}
+
 .portfolioBox:hover {
-    border: 1px solid #4aaaa5;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 990px) {

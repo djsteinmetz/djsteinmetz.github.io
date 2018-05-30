@@ -1,39 +1,125 @@
+$(document).ready(function() {
 
-var characterChoices = ["harry", "voldemort", "hermione", "ron", "dumbledore", "hagrid"]
-const maxGuesses = 10
+    var characterChoices = ["harry", "voldemort", "hermione", "ron", "dumbledore", "hagrid"]
+    const maxGuesses = 10
 
-var lettersGuessed = []
-var guessingWord = []
-var wordToMatch = []
-var numGuess
-var wins = 0
+    var guessedLetters = []
+    var guessingWord = []
+    var characterToMatch = []
+    var numGuess
+    var wins = 0
 
-resetGame()
+    // Set default image display
+    var image = "http://via.placeholder.com/350x450";
 
-// Look for key press
-document.onkeypress = function(event) {
-    if(event.key) {
-        checkForLetter(event.key.toUpperCase())
+    function changeImageDisplay() {
+        if(characterToMatch.toLowerCase() === "harry") {
+            image = "assets/images/Harry-Potter-in-cupboard-Jim-Kay-RGB-636x800.jpg";
+        }
+        else if(characterToMatch.toLowerCase() === "voldemort") {
+            image = "assets/images/HP1_Voldemort.jpg";
+        }
+        else if(characterToMatch.toLowerCase() === "hermione") {
+            image = "assets/images/Hermione_-_Jim_Kay_1_.jpg";
+        }
+        else if(characterToMatch.toLowerCase() === "ron") {
+            image = "assets/images/Ron_-_Jim_Kay.jpg";
+        }
+        else if(characterToMatch.toLowerCase() === "dumbledore") {
+            image = "assets/images/Pottermore_CharacterPortraits_Dumbledore_Colour_05JH.jpg";
+        }
+        else if(characterToMatch.toLowerCase() === "hagrid") {
+            image = "assets/images/Hagrid_-_Jim_Kay_1_.jpg";
+        };
     }
-}
 
-// Functions
+    resetGame()
 
-function checkForLetter(letter) {
-    var foundLetter = false
-}
-
-// Search string for letter
-for (var i=0; i < wordToMatch.length; i++) {
-    guessingWord[i]=letter
-    foundLetter=true
-    if (guessingWord.join("") === wordToMatch) {
-        // Increase win #
-        wins++
-        resetGame()
+    // Look for key press
+    document.onkeypress = function(event) {
+        // Make sure key pressed is an alpha character
+        if (isAlpha(event.key)) {
+            checkForLetter(event.key.toUpperCase())
+        }
     }
-}
 
+    // Functions
+
+    function checkForLetter(letter) {
+        var foundLetter = false
+
+        // Search string for letter
+        for (var i=0; i < characterToMatch.length; i++) {
+            if (letter === characterToMatch[i]) {
+                guessingWord[i]=letter
+                foundLetter=true
+                if (guessingWord.join("") === characterToMatch) {
+                    // Increase win #
+                    wins++
+                    changeImageDisplay()
+                    setTimeout(function() { resetGame(); }, 5000)
+                }
+            }
+        }
+
+        if(!foundLetter) {
+            if (!guessedLetters.includes(letter)) {
+                guessedLetters.push(letter)
+                numGuess--
+            }
+            if(numGuess===0) {
+                resetGame()
+            }
+        } 
+
+        updateDisplay()
+
+        if(guessingWord.join("") === characterToMatch) {
+            changeImageDisplay($("#potterImage").attr("src", image))
+            document.getElementById("nameDisplay").innerHTML = ""
+        }
+
+    }
+
+    // Check in keypressed is between A-Z or a-z
+    function isAlpha (ch){
+        return /^[A-Z]$/i.test(ch);
+    }
+
+    function resetGame() {
+        image = "http://via.placeholder.com/350x450"
+        numGuess=maxGuesses
+        console.log(numGuess)
+        // Get new Character
+        characterToMatch=characterChoices[Math.floor(Math.random() * characterChoices.length)].toUpperCase()
+        console.log(characterToMatch)
+
+        // Reset word arrays
+        guessedLetters=[]
+        guessingWord=[]
+
+        // Reset the word
+        for (var i=0; i<characterToMatch.length; i++) {
+            guessingWord.push("_")
+        }
+        console.log(guessingWord)
+        console.log(image)
+
+        updateDisplay()
+    }
+
+    updateDisplay()
+
+    function updateDisplay() {
+        document.getElementById("lettersGuessed").innerText = guessedLetters.join("")
+        document.getElementById("remainingGuesses").innerText = numGuess
+        document.getElementById("currentWord").innerText = guessingWord.join(" ")
+        document.getElementById("totalWins").innerText = wins
+        $("#potterImage").attr("src", "http://via.placeholder.com/350x450")
+        document.getElementById("nameDisplay").innerText = "GUESS THE CHARACTER"
+    }
+
+})
 
 
 // //COMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUTCOMMENTED OUT
