@@ -38,10 +38,12 @@ $(document).ready(function() {
 
     resetGame()
 
+    var canPlay = true;
+
     // Look for key press
     document.onkeypress = function(event) {
         // Make sure key pressed is an alpha character
-        if (isAlpha(event.key)) {
+        if (isAlpha(event.key) && canPlay) {
             checkForLetter(event.key.toUpperCase())
         }
     }
@@ -58,11 +60,10 @@ $(document).ready(function() {
                 foundLetter=true
                 if (guessingWord.join("") === characterToMatch) {
                     // Increase win #
+                    canPlay = false;
                     wins++
                     changeImageDisplay()
-                    setTimeout(function() { 
-                        resetGame(); 
-                    }, 5000)
+                    setTimeout(resetGame, 5000)
                 }
             }
         }
@@ -74,9 +75,8 @@ $(document).ready(function() {
             }
             if(numGuess===0) {
                 guessingWord = characterToMatch.split()
-                setTimeout(function() { 
-                    resetGame(); 
-                }, 5000)
+                canPlay = false;
+                setTimeout(resetGame, 5000)
             }
         } 
 
@@ -95,6 +95,7 @@ $(document).ready(function() {
     }
 
     function resetGame() {
+        canPlay = true;
         image = "assets/images/mystery-person.jpg"
         numGuess=maxGuesses
         //console.log(numGuess)
