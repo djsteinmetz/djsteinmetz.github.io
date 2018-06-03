@@ -1,19 +1,33 @@
-.container {
-    border: 2px solid black;
+body {
+    background-image:url('../images/C8l9hX1.jpg');
+    background-repeat:no-repeat;
+    background-position: center;
 }
 
-#horcruxCollector {
+.container {
+    padding: 0px;
+}
+
+h1 {
+    font-size: 75px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+}
+
+/* #horcruxCollector {
     text-align: center;
     padding: 20px;
     border: 2px solid black;
-}
+} */
 
-#instructions {
-    padding: 20px;
-    background: rgba(0,0,0,0.2);
+.horcruxDisplay {
+    margin: 0px;
+    padding: 50px;
+    /* background: rgba(0,0,0,0.2);
     box-shadow: 0 0 50px 10px rgba(0,0,0,0.3);
     border-radius: 50px;
-    color: white;
+    color: white; */
 }
 
 #gem {
@@ -39,11 +53,19 @@
     border: 2px solid black;
 }
 
-#horcrux {
-    border: 2px solid black;
-    margin: 10px;
+.horcrux {
+    padding: 0px;
 }
 
-#cruxLocket {
+img {
+    box-shadow: 0 0 50px 10px rgba(0,0,0,0.7);
+    border-radius: 180px;
+}
+
+.horcruxImage {
     max-width: 150px;
+}
+
+#scoreDisplay {
+    text-align: center;
 }

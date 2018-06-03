@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto+Condensed" rel="stylesheet">
 
 </head>
 <body>
@@ -20,91 +22,104 @@
 
         <div class="row">
             <div class="col-md-12" id="horcruxCollector">
-                <span>
-                    <p>Horcrux Collector</p>
-                </span>
+                <h1>Horcrux Collector</h1>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div> <!-- Empy Div to add space --> 
+            <!-- Empy Div to add space --> 
+            <div class="col-md-2"></div> 
 
             <div class="col-md-8" id="instructions">
                 <p>You will be given a random number at the start of the game.</p>
-                <p>There are four horcruxes below.  By clicking on a crystal you will add a specific amount of points to your total score.</p>
+                <p>There are four horcruxes below.  By clicking on a horcrux you will add a specific amount of points to your total score.</p>
                 <p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
                 <p>The value of each horcrux is hidden from you until you click on it.</p>
                 <p>Each time whne the game starts, the game will change the values of each horcrux.</p>
             </div>
-            
-            <div class="col-md-2"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-2"></div> 
         </div>
 
         <div class="row">
-            <div class="col-md-3"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-3"></div> 
 
             <div class="col-md-3" id="scoreToMatch">
-                <span>
-                    <h2>Score to Match</h2>
-                </span>
+                <h2>Score to Match</h2><br/>
+                <div class="container">
+                    <div class="row">
+                        <!-- Empy Div to add space -->
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2">
+                            <span id="scoreDisplay"></span>
+                        </div>
+                        <!-- Empy Div to add space -->
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-3" id="wins-losses">
-                <span id="wins">
-                    <h2>Wins:</h2>
-                </span>
-                <span id="losses">
-                    <h2>Losses:</h2>
-                </span>
+                <h2>Wins:</h2><span id="wins"></span>
+                <h2>Losses:</h2><span id="losses"></span>
             </div>
 
-            <div class="col-md-3"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-3"></div> 
+        </div>
+
+        <div class="row horcruxDisplay">
+            <!-- Empy Div to add space -->
+            <div class="col-lg-2"></div> 
+
+            <div class="col-lg-2 horcrux">
+                <img class="horcruxImage" src="assets/images/Locket__1_.jpg" id="cruxLocket">
+            </div>
+
+            <div class="col-lg-2 horcrux">
+                <img class="horcruxImage" src="assets/images/PM_Illust_Horcrux_Nagini_DB04.jpg" id="cruxNagini">
+            </div>
+
+            <div class="col-lg-2 horcrux">
+                <img class="horcruxImage" src="assets/images/WBSTL_PM_rowena_ravenclaws_diadem_horcrux.jpg" id="cruxDiadem">
+            </div>
+
+            <div class="col-lg-2 horcrux">
+                <img class="horcruxImage" src="assets/images/Horcrux_Hufflepuff_Cup.DB01.jpg" id="cruxCup">
+            </div>
+            <!-- Empy Div to add space -->
+            <div class="col-lg-2"></div> 
         </div>
 
         <div class="row">
-            <div class="col-md-2"></div> <!-- Empy Div to add space -->
-
-            <div class="col-md-2" id="horcrux">
-                <img src="assets/images/Locket__1_.jpg" id="cruxLocket">
-            </div>
-
-            <div class="col-md-2" id="horcrux">
-                <img src="assets/images/PM_Illust_Horcrux_Nagini_DB04.jpg" id="cruxLocket">
-            </div>
-
-            <div class="col-md-2" id="horcrux">
-                <img src="assets/images/WBSTL_PM_rowena_ravenclaws_diadem_horcrux.jpg" id="cruxLocket">
-            </div>
-
-            <div class="col-md-2" id="horcrux">
-                <img src="assets/images/Horcrux_Hufflepuff_Cup.DB01.jpg" id="cruxLocket">
-            </div>
-
-            <div class="col-md-2"></div> <!-- Empy Div to add space -->
-        </div>
-
-        <div class="row">
-            <div class="col-md-4"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-4"></div> 
 
             <div class="col-md-4" id="yourScore">
-                <p>Your score is:</p>
+                <p>Your score is</p>
             </div>
 
-            <div class="col-md-4"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-4"></div> 
         </div>
 
         <div class="row">
-            <div class="col-md-4"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-4"></div>
 
             <div class="col-md-4" id="scoreCounter">
-                <p>Score:</p>
+                <p>Score:</p><span id="playerScore"></span>
             </div>
 
-            <div class="col-md-4"></div> <!-- Empy Div to add space -->
+            <!-- Empy Div to add space -->
+            <div class="col-md-4"></div> 
         </div>
         
     </div>
 </body>
+<!-- Game JS File -->
+<script src="assets/javascript/game.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
