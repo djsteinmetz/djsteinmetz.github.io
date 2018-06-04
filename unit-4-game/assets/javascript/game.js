@@ -26,23 +26,28 @@ $(document).ready(function() {
     $(".horcruxImage").on("click", function() {
 
         addPower($(this).attr("id"));
-            // console.log($(this).attr("id"));
-            // console.log(this);
-            // console.log(playerScore);
 
         if (playerScore === scoreToMatch) {
+            pauseGame = true;
+            $("#playerScore").html("0");
             wins++;
+            winModal.style.display = "block";
             resetAndStart();
         }
         else if (playerScore > scoreToMatch) {
+            pauseGame = true;
+            $("#playerScore").html("0");
             losses++
+            loseModal.style.display = "block";
             resetAndStart();
         }
 
     });
 });
 
+/* Primary Game Logic Function */
 function resetAndStart() {
+    pauseGame = false;
     playerScore = 0;
     scoreToMatch = Math.floor(Math.random() * 102 + 19); 
     console.log(scoreToMatch);
@@ -100,4 +105,31 @@ function addPower(Crux) {
     }
     // Display new power accumulation
     $("#playerScore").html(playerScore);
+}
+// Get the WIN modal
+var winModal = document.getElementById('winModal');
+// Get the LOSE modal
+var loseModal = document.getElementById('loseModal');
+// Get the <span> element that closes the modal
+var winSpan = document.getElementsByClassName("winClose")[0];
+// Get the <span> element that closes the modal
+var loseSpan = document.getElementsByClassName("loseClose")[0];
+
+// When the user clicks on <span> (x), close the win & lose modals
+winSpan.onclick = function() {
+    winModal.style.display = "none";
+}
+
+loseSpan.onclick = function() {
+    loseModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the win or lose modals, close them
+window.onclick = function(event) {
+    if (event.target == winModal) {
+        winModal.style.display = "none";
+    }
+    else if (event.target == loseModal) {
+        loseModal.style.display = "none";
+    }
 }
