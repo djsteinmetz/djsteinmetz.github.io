@@ -1,145 +1,3 @@
-/*body {
-    margin: auto;
-    background-image: url(../images/rockywall.png);
-    box-sizing: border-box;
-}
-
-.navbar {
-    background-color: white!Important;
-    width: 100%;
-    border-bottom: 2px solid #dddddd;
-    margin-bottom: 20px;
-    overflow: auto;
-    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-.header {
-    width: 960px;
-    margin: auto;
-    color: #dddddd;
-}
-
-.navbar {
-    margin-bottom: 20px;
-    padding: 0px;
-}
-
-.navbar-toggler {
-    float: right;
-    margin: 10px 10px 0px 0px;
-}
-
-.nav-item {
-    margin-top: 20px;
-    padding: 0px 10px 0px 0px;
-}
-
-.nav-about, .nav-portfolio {
-    border-right: 1px solid #ddd;
-}
-
-#logoName {
-    color: #ffffff;
-    text-align: center;
-    background-color: #4aaaa5;
-    width: 240px;
-    height: 100%;
-    font-family: 'Georgia', Times, Times New Roman, serif;
-    padding: 20px;
-    font-weight: bolder;
-    font-size: 25px;
-    float: left;
-    margin: 0;
-}
-
-.h3 {
-    color: #777777;
-    background-color: white;
-    float: right;
-    width: auto;
-    padding: 20px 0px 20px 20px;
-    font-size: 18px;
-
-}
-
-
-.navbar {
-    display: inline-block;
-    width: 100%;
-    background-color: #ffffff;
-    border: 2px solid green;
-}
-
-.navbar-nav {
-    background-color: red;
-    align-content: right;
-}
-
-.navbar-brand {
-    background-color: #4aaaa5;
-    padding: 20px 30px 20px 30px;
-    color: #ffffff;
-}
-
-
-#copyright {
-    color: #eeeeee;
-}
-
-#bioImage {
-    box-sizing: border-box;
-    background-color: #ffffff;
-    width: 100%;
-    max-width: 200px;
-    float: left;
-    margin: 5px 5px 5px 5px;
-    border: 1px solid #dddddd;
-}
-
-p {
-    color: #777777;
-    line-height: 1.5rem;
-}
-
-footer {
-    box-sizing: border-box;
-    overflow: auto;
-    color: #ffffff;
-    background-color: #666666;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    border-top: 5px solid #4aaaa5;
-    bottom: 0;
-    margin: 20px 0px 0px 0px;
-}
-
-#copyright {
-    color: #eeeeee;
-}
-
-@media screen and (max-width: 960px) {
-    .bioImage {
-        float: left;
-    }
-}
-
-@media screen and (max-width: 720px) {
-    .copyAbout {
-        padding-left: 20px;
-    }
-}
-*/
-
-/*Google font sources:
-
-Font-Family: 'Roboto Condensed', Sans-Serif;
-Font-Size: 35px;
-
-Font-Family: 'Cabin', Sans-Serif;
-Font-Size: 16px;
-*/
-
 .navbar {
     background-color: #ffffff !Important;
     border: 1px solid #dddddd;
@@ -206,7 +64,7 @@ body {
 .banner {
     box-sizing: border-box;
     color: #eeeeee;
-    background-color: #4aaaa5;
+    background-color: #777;
     padding: 15px;
     margin: 130px 0px 0px 0px;
     width: 100%;
@@ -223,10 +81,15 @@ body {
     height: 200px;
     margin: 20px;
     padding: 10px 0px 0px 0px;
+    cursor: url("../cursor/harry-potter-deathly-hallows-vinyl-decal-decals-snooozeworks_1024x1024.png"), auto!Important;
 }
 
 #hangman {
     background-image: url(../images/hogwarts-background.jpg);
+}
+
+#cruxGame {
+    background-image: url(../images/cruxGame.jpg);
 }
 
 .portfolioBox:hover {
