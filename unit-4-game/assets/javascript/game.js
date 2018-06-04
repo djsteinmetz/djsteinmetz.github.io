@@ -1,11 +1,19 @@
 /* Declaring object variables */
 var scoreToMatch;
 var playerScore;
+
+// starting with a capital letter says "hey, I'm creating a new generic object that I can use in other places" This object's value = this's passed value - template, generic crux
+function Crux (value) {
+    this.value = value;
+}
+
 /* var horcurxes = ["cruxLocket", "cruxNagini", "cruxDiadem", "cruxCup"] */
 var cruxLocket = new Crux();
 var cruxNagini = new Crux();
 var cruxDiadem = new Crux();
 var cruxCup = new Crux();
+
+//funky objects - defined an object 
 
 /* Declaring starting variables */
 var wins = 0;
@@ -13,34 +21,30 @@ var losses = 0;
 var pauseGame = false;
 
 $(document).ready(function() {
-    resetGame();
+    resetAndStart();
 
     $(".horcruxImage").on("click", function() {
 
         addPower($(this).attr("id"));
-            console.log($(this).attr("id"));
-            console.log(this);
-            console.log(playerScore);
+            // console.log($(this).attr("id"));
+            // console.log(this);
+            // console.log(playerScore);
 
         if (playerScore === scoreToMatch) {
             wins++;
-            resetGame();
+            resetAndStart();
         }
         else if (playerScore > scoreToMatch) {
             losses++
-            resetGame();
+            resetAndStart();
         }
 
     });
 });
 
-function Crux (value) {
-    this.value = value;
-}
-
-function resetGame() {
+function resetAndStart() {
     playerScore = 0;
-    var scoreToMatch = Math.floor(Math.random() * 102 + 19); 
+    scoreToMatch = Math.floor(Math.random() * 102 + 19); 
     console.log(scoreToMatch);
 
     var powersArr = [];
@@ -61,7 +65,14 @@ function resetGame() {
     $("#losses").html(losses);
 }
 
-
+// creating a unique random number
+// store random gen numbers in a temporary array (within the resetAndStart()) Everytime game is restarted, the random powers clear out
+// pa - is a local variable that lets the function know you are passing it something
+// inside the function - a nickname for the powers array is uesd
+// do while will execute minimum of 1 time, and will execute until "something" is met
+// (pa.inclues(power)); - searching the array for a unique power number 
+// generic and reusable 
+// anything you pass in parenthesis, you are handing the function an envelope of goodies.
 function getRandomPower(pa) {
     var power;
     // Loop until a unique power value is generated
