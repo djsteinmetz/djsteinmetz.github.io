@@ -23,6 +23,8 @@ h1 {
     text-align: center;
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+    color: white;
 }
 
 h2 {
@@ -37,6 +39,14 @@ h3 {
 
 .scoreboard {
     padding: 20px;
+}
+
+#scoreDisplay,
+#playerScore {
+    font-size: 25px;
+    text-shadow: 2px 2px 4px #000000;
+    color: white;
+
 }
 
 .horcruxDisplay {
@@ -60,6 +70,8 @@ h3 {
     max-width: 150px;
     box-shadow: 0 0 50px 10px rgba(0,0,0,0.7);
     border-radius: 180px;
+    cursor: url("../images/Harry_Potter\'s_Wand.png"), auto;
+    margin: 25px 0px 25px 0px;
 }
 
 #wins-losses {
@@ -120,6 +132,7 @@ h3 {
     font-size: 28px;
     font-weight: bold;
     width: 25px;
+    cursor: pointer;
 }
 
 .winClose:hover,
@@ -129,4 +142,10 @@ h3 {
     color: white;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .col-md-2 {
+        text-align: center;
+    }
 }
