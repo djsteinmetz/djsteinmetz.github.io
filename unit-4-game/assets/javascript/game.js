@@ -50,7 +50,7 @@ function resetAndStart() {
     pauseGame = false;
     playerScore = 0;
     scoreToMatch = Math.floor(Math.random() * 102 + 19); 
-    console.log(scoreToMatch);
+    // console.log(scoreToMatch);
 
     var powersArr = [];
 
@@ -59,10 +59,10 @@ function resetAndStart() {
     cruxDiadem.power = getRandomPower(powersArr);
     cruxCup.power = getRandomPower(powersArr);
 
-    console.log("Locket: " + cruxLocket.power);
-    console.log("Nagini: " + cruxNagini.power);
-    console.log("Diadem: " + cruxDiadem.power);
-    console.log("Cup: " + cruxCup.power);
+    // console.log("Locket: " + cruxLocket.power);
+    // console.log("Nagini: " + cruxNagini.power);
+    // console.log("Diadem: " + cruxDiadem.power);
+    // console.log("Cup: " + cruxCup.power);
 
     // Display values
     $("#scoreDisplay").html(scoreToMatch);
