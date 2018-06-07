@@ -118,8 +118,8 @@ var timer = {
 
 // Timer not working 
 function startGame() {
+    timer.start();
     playGame = true;
-    timerRunning = false;
     $("#answerButtons").prepend('<div class="text-center">' + qAndA[0].question);
     $("#ans1").append(qAndA[0].ans1);
     $("#ans2").append(qAndA[0].ans2);
