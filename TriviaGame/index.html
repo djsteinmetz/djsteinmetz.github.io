@@ -20,7 +20,7 @@
     <title>Harry Potter Trivia</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid text-center">
         <div class="container text-center">
             <h1 class="display-4">Harry Potter Trivia</h1>
             <p class="lead">Test your knowledge of all things Hogwarts and Harry Potter.</p>
@@ -31,11 +31,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4"></div>
+                <div class="col-md-4 text-center" id="question"></div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
                 <div class="col-md-4 text-center" id="answerButtons">
                     <button type="button" class="btn btn-outline-secondary" id="ans1"></button>
                     <button type="button" class="btn btn-outline-secondary" id="ans2"></button>
                     <button type="button" class="btn btn-outline-secondary" id="ans3"></button>
                 </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center" id="resultsDisplay"></div>
                 <div class="col-md-4"></div>
             </div>
         </div>
