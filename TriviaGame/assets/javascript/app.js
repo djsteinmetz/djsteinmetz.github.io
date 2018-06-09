@@ -13,27 +13,39 @@ function camelize(str) {
     }).replace(/\s+/g, '');
 };
 
+// unCamelize the correct answer to display upon incorrect guess
+function unCamelize (str){
+    return str
+        // insert a space between lower & upper
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        // space before last upper in a sequence followed by lower
+        .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
+        // uppercase the first character
+        .replace(/^./, function(str){ return str.toUpperCase(); })
+}
+
+// When question is asked, add it to an asked array - when they are equivalent in size, then the game is over.
 var qAndA = [{
     question: "What is Dumbledore's first name?",
         ans1: "Albus",
         ans2: "Alan",
         ans3: "Albert",
         correctAnswer: "albus",
-        gif: "assets/gif/"},
+        gif: "assets/gif/dumbledore.gif"},
 {
     question: "What is Harry's owl's name?",
         ans1: "Hedwig",
         ans2: "Herbert",
         ans3: "Kristin",
         correctAnswer: "hedwig",
-        gif: "assets/gif/"},
+        gif: "assets/gif/hedwig.gif"},
 {
     question: "What is the spell that summons an object to it's caster?",
         ans1: "Alohamora", 
         ans2: "Levicorpus", 
         ans3: "Accio",
         correctAnswer: "accio",
-        gif: "assets/gif/"},
+        gif: "assets/gif/accio.gif"},
 {   
     question: "What spell can be used to protect oneself from a Dementor?",
         ans1: "Aguamenti",
@@ -51,9 +63,15 @@ var qAndA = [{
 }];
 
 var gameTimer = new Countdown({  
-    seconds:30,  // number of seconds to count down
-    onUpdateStatus: function(sec){console.log(sec); $("#timerDisplay").html("00:" + sec);}, // callback for each second
-    onCounterEnd: function(){ console.log("Time's up!");} // final action
+    seconds:10,  // number of seconds to count down
+    onUpdateStatus: function(sec) {
+        console.log(sec); $("#timerDisplay").html("00:" + sec);
+    }, // callback for each second
+    onCounterEnd: function(){ 
+        console.log("Time's up!");
+        $("#resultsDisplay").html("<h1>Time's Up!</h1>");
+        setTimeout(getQuestion, 3000);
+    } // final action
 });
 
 // 30s Timer
@@ -85,35 +103,43 @@ function Countdown(options) {
     };
 };
 
-// TODO: How do I have this choose a random question, but not a question twice?
 function getQuestion() {
-    $("#resultsDisplay").empty();
-    $("#gifDisplay").empty();
-    randomQuestion = qAndA[Math.floor(Math.random()*qAndA.length)];
-    gameTimer.start();
-    console.log(randomQuestion.question);
-    console.log(randomQuestion.ans1);
-    console.log(randomQuestion.ans2);
-    console.log(randomQuestion.ans3);
-    // Display the question
-    $("#question").html(randomQuestion.question);
-    // Display the answers in the button divs
-    $("#ans1").html(randomQuestion.ans1);
-    $("#ans2").html(randomQuestion.ans2);
-    $("#ans3").html(randomQuestion.ans3);
-    // Add IDs to the buttons
-    $("#ans1").attr("id", camelize(randomQuestion.ans1));
-    $("#ans2").attr("id", camelize(randomQuestion.ans2));
-    $("#ans3").attr("id", camelize(randomQuestion.ans3));
-    return;
+    if(!qAndA.length==0) {
+        $("#resultsDisplay").empty();
+        $("#gifDisplay").empty();
+        var questionIndex = Math.floor(Math.random()*qAndA.length)
+        randomQuestion = qAndA[questionIndex];
+        // Start countdown
+        // gameTimer.start();
+        console.log(randomQuestion.question);
+        console.log(randomQuestion.ans1);
+        console.log(randomQuestion.ans2);
+        console.log(randomQuestion.ans3);
+        // Display the question
+        $("#question").html(randomQuestion.question);
+        // Display the answers in the button divs
+        console.log($("#ans1"))
+        $("#ans1").html(randomQuestion.ans1);
+        $("#ans2").html(randomQuestion.ans2);
+        $("#ans3").html(randomQuestion.ans3);
+        console.log($("#ans1").html());
+        // Add IDs to the buttons
+        $("#ans1").attr("data-answer", camelize(randomQuestion.ans1));
+        $("#ans2").attr("data-answer", camelize(randomQuestion.ans2));
+        $("#ans3").attr("data-answer", camelize(randomQuestion.ans3));
+        // Remove the selected randomQuestion from the qAndA array
+        qAndA.splice(questionIndex, 1);
+        console.log(randomQuestion);
+        console.log(qAndA);
+    }
 };
 
 function newGame() {
     $("#startBtn").on("click", function() {
+        playGame = true;
         $("#answerChoices").show();
         console.log(this);
         $(this).hide();
-        // playGame = true;
         correctAnswer = 0;
         incorrectAnswer = 0;
         correctGuesses = [];
@@ -123,26 +149,29 @@ function newGame() {
     })
 };
 
-// TODO: Why does my question update, but NOT the answer choices??
-
-// Game Starts Here 
- $(document).ready(function() {
-
-    newGame();
-
-    $(".qBtn").on("click", function() {
-        userGuess = this.id;
-
-        if(gameTimer.seconds === 0) {
-            $("#resultsDisplay").html("<h1>Time's Up!</h1>");
-            setTimeout(getQuestion, 3000);
-        } 
+function gameOver() {
+    playGame = false;
+    gameTimer.stop();
+    $("#question").hide();
+    $("#answerChoices").hide();
+    $("#timerDisplay").hide();
+    $("#gifDisplay").hide();
+    $("#resultsDisplay").html("Your Results");
+    $("#numberCorrect").html("<h1>Correct: " + correctGuesses.length + "</h1>");
+    $("#numberIncorrect").html("<h1>Incorrect: " + incorrectGuesses.length + "</h1>");
+    // setTimeout(newGame, 5000);
+}
 // TODO: How do I get it so that the answer doesn't have to be all lowercase (so that it displays right when displaying randomQuestion.correctAnswer)
+// Game Starts Here 
+$(document).ready(function() {
+    newGame();
+        $(".qBtn").on("click", function() {
+            userGuess = $(this).attr("data-answer");
         if(userGuess==randomQuestion.correctAnswer) {
             playGame = false;
             correctAnswer++
             gameTimer.stop();
-            correctGuesses.push(this.id);
+            correctGuesses.push(userGuess);
             console.log(correctGuesses);
             $("#resultsDisplay").html("<h1>Correct!</h1>");
             $("#gifDisplay").html("<img src=" + randomQuestion.gif + ">");
@@ -152,11 +181,15 @@ function newGame() {
             playGame = false;
             incorrectAnswer++
             gameTimer.stop();
-            incorrectGuesses.push(this.id);
+            incorrectGuesses.push(userGuess);
             console.log(incorrectGuesses);
-            $("#resultsDisplay").html("<h1>Incorrect! The correct answer was: " + randomQuestion.correctAnswer) + "</h1>";
+            $("#resultsDisplay").html("<h1>Incorrect! The correct answer was: " + unCamelize(randomQuestion.correctAnswer) + "</h1>");
             setTimeout(getQuestion, 3000);
         };
+        // gameOver if the qAndA array is empty
+        if(qAndA.length === 0) {
+            setTimeout(gameOver, 5000);
+        }
 
     })
 });
