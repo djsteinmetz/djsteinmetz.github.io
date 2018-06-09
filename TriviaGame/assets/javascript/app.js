@@ -4,95 +4,76 @@ var incorrectGuess;
 var playGame = false;
 var qAndA = [{
     question: "What is Dumbledore's first name?",
-        ans1: "Albus",
-        ans2: "Alan",
-        ans3: "Albert",
-        correctAnswer: "Albus"},
+    answerOptions: ["Albus", "Alan", "Albert"],
+    answer: 0,},
 {
     question: "What is Harry's owl's name?",
-        ans1: "Hedwig",
-        ans2: "Herbert",
-        ans3: "Kristin",
-        correctAnswer: "Hedwig"
-}];
-var userAnswers = [];
-var questionCount = 0;
+    answerOptions: ["Herbert", "Hedwig", "Hollis"],
+    answer: 1,
+}]; // end of questions
 
-var randomQuestion = qAndA[Math.floor(Math.random()*qAndA.length)];
+var resultMessages= {
+    correct: "EXCELLENT! You're correct.",
+    incorrect: "DREADFUL! Hit the books, muggle.",
+    timeOut: "Out of Time!",
+    done: "Your results:"
+}
+var currentQuestion; // Holds current question
+var userAnswers; // Holds the user choice
+var correctAnswer;
+var incorrectAnswer;
+var answered;
+var unanswered;
+var seconds;
+var time;
 
-var gameTimer = new Countdown({  
-    seconds:30,  // number of seconds to count down
-    onUpdateStatus: function(sec){console.log(sec); $("#timerDisplay").html("00:" + sec);}, // callback for each second
-    onCounterEnd: function(){ console.log("Time's up!");} // final action
-});
+// Start Button
+$("#startBtn").on("click", function() {
+    $(this).hide();
+    newGame();
+    showTimer();
+    
+})
 
-// 30s Timer
-function Countdown(options) {
-    var timer,
-    instance = this,
-    seconds = options.seconds || 10,
-    updateStatus = options.onUpdateStatus || function () {},
-    counterEnd = options.onCounterEnd || function () {};
-  
-    function decrementCounter() {
-      updateStatus(seconds);
-      if (seconds === 0) {
-        counterEnd();
-        instance.stop();
-      }
-      seconds--;
-    }
-  
-    this.start = function () {
-      clearInterval(timer);
-      timer = 0;
-      seconds = options.seconds;
-      timer = setInterval(decrementCounter, 1000);
-    };
-  
-    this.stop = function () {
-      clearInterval(timer);
-    };
-};
+// Reset Button
+$("#restartBtn").on("click", function() {
+    $(this).hide();
+    newGame();
+})
 
-function getQuestion() {
-    console.log(randomQuestion.question);
-    console.log(randomQuestion.ans1);
-    console.log(randomQuestion.ans2);
-    console.log(randomQuestion.ans3);
-    // Display the question
-    $("#question").html(randomQuestion.question);
-    // Display the answers in the button divs
-    $("#ans1").html(randomQuestion.ans1);
-    $("#ans2").html(randomQuestion.ans2);
-    $("#ans3").html(randomQuestion.ans3);
-    // Add IDs to the buttons
-    $("#ans1").attr("id", randomQuestion.ans1);
-    $("#ans2").attr("id", randomQuestion.ans2);
-    $("#ans3").attr("id", randomQuestion.ans3);
-    return;
-};
+// Start Game
+function newGame() {
+	$('#finalMessage').empty();
+	$('#rightAnswers').empty();
+	$('#wrongAnswers').empty();
+    $('#notAnswered').empty();
+    currentQuestion = 0;
+	correctAnswer = 0;
+	wrongAnswer = 0;
+	unanswered = 0;
+	newQuestion();
+}
 
-function resetGame() {
-    gameTimer.start();
-    getQuestion(); 
-};
-// TODO: How do I loop through the questions 1 at a time, and not all at once?
-// Game Starts Here 
- $(document).ready(function() {
-    console.log(qAndA.length)
-    resetGame();
-    $(".btn").on("click", function() {
-        userGuess = this.id;
-        if(userGuess==randomQuestion.correctAnswer) {
-            gameTimer.stop();
-            // TODO: Push the user answer to the userAnswers array
-            $("#resultsDisplay").html("<h1>Correct!</h1>");
-        }
-        else {
-            gameTimer.stop();
-           $("#resultsDisplay").html("<h1>Incorrect!</h1>");
-        };
-        setTimeout(resetGame, 5000);
-    })
-});
+// Generate question
+function newQuestion() {
+    $("#message")
+}
+
+// 30s timer
+function timer(){
+	seconds = 30;
+	$('#timer').html('<h3>Time Remaining: ' + seconds + '</h3>');
+	answered = true;
+	//countdown
+	time = setInterval(showTimer, 1000);
+}
+
+function showTimer(){
+	seconds--;
+	$('#timerDisplay').html('<h3>Time Remaining: ' + '00:' + seconds + '</h3>');
+	if(seconds < 1){
+		clearInterval(time);
+		answered = false;
+		resultsPage(); //switch to answer page
+	}
+}
