@@ -24,7 +24,7 @@ function unCamelize (str){
         .replace(/^./, function(str){ return str.toUpperCase(); })
 }
 
-// When question is asked, add it to an asked array - when they are equivalent in size, then the game is over.
+// Quiz object containing the questions, answer options and the correct answer
 var qAndA = [{
     question: "What is Dumbledore's first name?",
         ans1: "Albus",
@@ -62,18 +62,6 @@ var qAndA = [{
         gif: "assets/gif/durmstrang-boat.gif"
 }];
 
-var gameTimer = new Countdown({  
-    seconds:10,  // number of seconds to count down
-    onUpdateStatus: function(sec) {
-        console.log(sec); $("#timerDisplay").html("00:" + sec);
-    }, // callback for each second
-    onCounterEnd: function(){ 
-        console.log("Time's up!");
-        $("#resultsDisplay").html("<h1>Time's Up!</h1>");
-        setTimeout(getQuestion, 3000);
-    } // final action
-});
-
 // 30s Timer
 function Countdown(options) {
     var timer,
@@ -103,6 +91,20 @@ function Countdown(options) {
     };
 };
 
+// Game timer
+var gameTimer = new Countdown({  
+    seconds:10,  // number of seconds to count down
+    onUpdateStatus: function(sec) {
+        console.log(sec); $("#timerDisplay").html("00:" + sec);
+    }, // callback for each second
+    onCounterEnd: function(){ 
+        console.log("Time's up!");
+        $("#resultsDisplay").html("<h1>Time's Up!</h1>");
+        setTimeout(getQuestion, 3000);
+    } // final action
+});
+
+// Retrieving a question from the qAndA object
 function getQuestion() {
     if(!qAndA.length==0) {
         $("#resultsDisplay").empty();
@@ -134,6 +136,7 @@ function getQuestion() {
     }
 };
 
+// New Game function to set up all displays and reset variables
 function newGame() {
     $("#startBtn").on("click", function() {
         playGame = true;
@@ -149,43 +152,49 @@ function newGame() {
     })
 };
 
+// End game upon all questions being asked
 function gameOver() {
     playGame = false;
     gameTimer.stop();
+    // Hide all of the game play elements
     $("#question").hide();
     $("#answerChoices").hide();
     $("#timerDisplay").hide();
     $("#gifDisplay").hide();
+    // Display the quiz results
     $("#resultsDisplay").html("Your Results");
     $("#numberCorrect").html("<h1>Correct: " + correctGuesses.length + "</h1>");
     $("#numberIncorrect").html("<h1>Incorrect: " + incorrectGuesses.length + "</h1>");
     // setTimeout(newGame, 5000);
 }
-// TODO: How do I get it so that the answer doesn't have to be all lowercase (so that it displays right when displaying randomQuestion.correctAnswer)
+// TODO: How do I get it so that the unCamelize feature does correct phrase casing ("Hello world" and not "Hello World")
+
 // Game Starts Here 
 $(document).ready(function() {
     newGame();
-        $(".qBtn").on("click", function() {
+    $(".qBtn").on("click", function() {
             userGuess = $(this).attr("data-answer");
-        if(userGuess==randomQuestion.correctAnswer) {
-            playGame = false;
-            correctAnswer++
-            gameTimer.stop();
-            correctGuesses.push(userGuess);
-            console.log(correctGuesses);
-            $("#resultsDisplay").html("<h1>Correct!</h1>");
-            $("#gifDisplay").html("<img src=" + randomQuestion.gif + ">");
-            setTimeout(getQuestion, 3000);
-        }
-        else {
-            playGame = false;
-            incorrectAnswer++
-            gameTimer.stop();
-            incorrectGuesses.push(userGuess);
-            console.log(incorrectGuesses);
-            $("#resultsDisplay").html("<h1>Incorrect! The correct answer was: " + unCamelize(randomQuestion.correctAnswer) + "</h1>");
-            setTimeout(getQuestion, 3000);
-        };
+            if(playGame = true) { // This is in attempt to stop multiple guesses
+                if(userGuess==randomQuestion.correctAnswer) {
+                    playGame = false;
+                    correctAnswer++
+                    gameTimer.stop();
+                    correctGuesses.push(userGuess);
+                    console.log(correctGuesses);
+                    $("#resultsDisplay").html("<h1>Correct!</h1>");
+                    $("#gifDisplay").html("<img src=" + randomQuestion.gif + ">");
+                    setTimeout(getQuestion, 3000);
+                }
+                else {
+                    playGame = false;
+                    incorrectAnswer++
+                    gameTimer.stop();
+                    incorrectGuesses.push(userGuess);
+                    console.log(incorrectGuesses);
+                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was: " + unCamelize(randomQuestion.correctAnswer) + "</h1>");
+                    setTimeout(getQuestion, 3000);
+                };
+            };
         // gameOver if the qAndA array is empty
         if(qAndA.length === 0) {
             setTimeout(gameOver, 5000);
