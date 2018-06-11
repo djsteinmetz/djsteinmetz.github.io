@@ -1,0 +1,49 @@
+h1,
+p {
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.btn-light {
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+#headerImage {
+    /* The image used */
+    background-image: url("../assets/images/IMG_9835.jpg");
+    padding: 150px 5px 150px 5px;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px 0px 25px 0px;
+}
+
+.cityImages {
+    margin: 10px;
+}
+
+#minneapolisStudio {
+    padding: 150px;
+    /* Background image with black gradient from bottom */
+    background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.5)), url("../assets/images/IMG_0023.jpg");
+    /* Regular background with no effects */
+    /* background-image: url("../assets/images/IMG_0023.jpg"); */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px;
+}
