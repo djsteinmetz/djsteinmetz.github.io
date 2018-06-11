@@ -133,6 +133,10 @@ function getQuestion() {
         qAndA.splice(questionIndex, 1);
         console.log(randomQuestion);
         console.log(qAndA);
+        // Make sure buttons are clickable
+        $("#ans1").prop("disabled", false);
+        $("#ans2").prop("disabled", false);
+        $("#ans3").prop("disabled", false);
     }
 };
 
@@ -176,7 +180,9 @@ $(document).ready(function() {
             userGuess = $(this).attr("data-answer");
             if(playGame = true) { // This is in attempt to stop multiple guesses
                 if(userGuess==randomQuestion.correctAnswer) {
-                    playGame = false;
+                    $("#ans1").prop("disabled", true);
+                    $("#ans2").prop("disabled", true);
+                    $("#ans3").prop("disabled", true);
                     correctAnswer++
                     gameTimer.stop();
                     correctGuesses.push(userGuess);
@@ -186,7 +192,9 @@ $(document).ready(function() {
                     setTimeout(getQuestion, 3000);
                 }
                 else {
-                    playGame = false;
+                    $("#ans1").prop("disabled", true);
+                    $("#ans2").prop("disabled", true);
+                    $("#ans3").prop("disabled", true);
                     incorrectAnswer++
                     gameTimer.stop();
                     incorrectGuesses.push(userGuess);
