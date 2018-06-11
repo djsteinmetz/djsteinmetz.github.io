@@ -1,6 +1,6 @@
 var correctAnswer = 0;
 var incorrectAnswer = 0;
-var playGame = false;
+var playGame = true;
 var correctGuesses = [];
 var incorrectGuesses = [];
 var questionCount = 0;
@@ -139,7 +139,6 @@ function getQuestion() {
 // New Game function to set up all displays and reset variables
 function newGame() {
     $("#startBtn").on("click", function() {
-        playGame = true;
         $("#answerChoices").show();
         console.log(this);
         $(this).hide();
@@ -168,6 +167,7 @@ function gameOver() {
     // setTimeout(newGame, 5000);
 }
 // TODO: How do I get it so that the unCamelize feature does correct phrase casing ("Hello world" and not "Hello World")
+// TODO: How do I get a 'pause' feature on the game for when a selection has been made?  To prevent multiple choices?
 
 // Game Starts Here 
 $(document).ready(function() {
@@ -191,12 +191,13 @@ $(document).ready(function() {
                     gameTimer.stop();
                     incorrectGuesses.push(userGuess);
                     console.log(incorrectGuesses);
-                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was: " + unCamelize(randomQuestion.correctAnswer) + "</h1>");
+                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + unCamelize(randomQuestion.correctAnswer) + "</h1>");
                     setTimeout(getQuestion, 3000);
                 };
             };
         // gameOver if the qAndA array is empty
         if(qAndA.length === 0) {
+            playGame = false;
             setTimeout(gameOver, 5000);
         }
 

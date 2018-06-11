@@ -5,4 +5,18 @@
 
 #answerChoices {
     display: none;
+    margin: 25px;
+}
+
+#question {
+    margin: 25px;
+}
+
+p,
+h1 {
+    margin: 25px;
+}
+
+#resultsDisplay {
+    color: olive;
 }
