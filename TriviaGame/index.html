@@ -20,7 +20,7 @@
     <title>Harry Potter Trivia</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center" id="backgroundImage">
         <div class="container text-center">
             <h1 class="display-4">Harry Potter Trivia</h1>
             <p class="lead">Test your knowledge of all things Hogwarts and Harry Potter.</p>
@@ -47,7 +47,14 @@
                 <div class="col-md-12 text-center" id="resultsDisplay"></div>
                 <div class="col-md-12 text-center" id="numberCorrect"></div>
                 <div class="col-md-12 text-center" id="numberIncorrect"></div>
-                <!-- <div class="col-md-12 text-center" id="#"></div> -->
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="resultsPercentageDisplay"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-outline-secondary" id="replayBtn">Replay</button>
+                </div>
             </div>
 
             <div class="row">

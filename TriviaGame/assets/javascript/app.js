@@ -62,6 +62,8 @@ var qAndA = [{
         gif: "assets/gif/durmstrang-boat.gif"
 }];
 
+var quizLength = qAndA.length;
+
 // 30s Timer
 function Countdown(options) {
     var timer,
@@ -166,8 +168,12 @@ function gameOver() {
     $("#gifDisplay").hide();
     // Display the quiz results
     $("#resultsDisplay").html("Your Results");
-    $("#numberCorrect").html("<h1>Correct: " + correctGuesses.length + "</h1>");
-    $("#numberIncorrect").html("<h1>Incorrect: " + incorrectGuesses.length + "</h1>");
+    var percentCorrect = (correctGuesses.length/quizLength) * 100;
+    console.log(percentCorrect)
+    $("#resultsPercentageDisplay").html("<h3>You scored a " + percentCorrect +"% on this quiz!</h3>");
+    $("#numberCorrect").html("<h2>Correct: " + correctGuesses.length + "</h2>");
+    $("#numberIncorrect").html("<h2>Incorrect: " + incorrectGuesses.length + "</h2>");
+    $("#replayBtn").show();
     // setTimeout(newGame, 5000);
 }
 // TODO: How do I get it so that the unCamelize feature does correct phrase casing ("Hello world" and not "Hello World")
@@ -209,5 +215,9 @@ $(document).ready(function() {
             setTimeout(gameOver, 5000);
         }
 
+    })
+
+    $("#replayBtn").on("click", function() {
+        location.reload();
     })
 });
