@@ -20,14 +20,3 @@ h1 {
 #replayBtn {
     display: none;
 }
-
-/* #backgroundImage {
-    background: linear-gradient(transparent, rgb(255, 255, 255, 0.5)), url("../assets/images/IMG_0023.jpg"), url("../images/background-image.jpg"); */
-    /* Full height */
-    /* height: 100%; */
-    /* Center and scale the image nicely */
-    /* background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0px 0px 25px 0px;
-} */

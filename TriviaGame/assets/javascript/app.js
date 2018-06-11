@@ -3,6 +3,7 @@ var incorrectAnswer = 0;
 var playGame = true;
 var correctGuesses = [];
 var incorrectGuesses = [];
+var unansweredQuestions = [];
 var questionCount = 0;
 var randomQuestion;
 
@@ -14,15 +15,15 @@ function camelize(str) {
 };
 
 // unCamelize the correct answer to display upon incorrect guess
-function unCamelize (str){
-    return str
-        // insert a space between lower & upper
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        // space before last upper in a sequence followed by lower
-        .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
-        // uppercase the first character
-        .replace(/^./, function(str){ return str.toUpperCase(); })
-}
+// function unCamelize (str){
+//     return str
+//         // insert a space between lower & upper
+//         .replace(/([a-z])([A-Z])/g, '$1 $2')
+//         // space before last upper in a sequence followed by lower
+//         .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
+//         // uppercase the first character
+//         .replace(/^./, function(str){ return str.toUpperCase(); })
+// }
 
 // Quiz object containing the questions, answer options and the correct answer
 var qAndA = [{
@@ -31,6 +32,7 @@ var qAndA = [{
         ans2: "Alan",
         ans3: "Albert",
         correctAnswer: "albus",
+        displayAnswer: "Albus",
         gif: "assets/gif/dumbledore.gif"},
 {
     question: "What is Harry's owl's name?",
@@ -38,6 +40,7 @@ var qAndA = [{
         ans2: "Herbert",
         ans3: "Kristin",
         correctAnswer: "hedwig",
+        displayAnswer: "Hedwig",
         gif: "assets/gif/hedwig.gif"},
 {
     question: "What is the spell that summons an object to it's caster?",
@@ -45,6 +48,7 @@ var qAndA = [{
         ans2: "Levicorpus", 
         ans3: "Accio",
         correctAnswer: "accio",
+        displayAnswer: "Accio",
         gif: "assets/gif/accio.gif"},
 {   
     question: "What spell can be used to protect oneself from a Dementor?",
@@ -52,6 +56,7 @@ var qAndA = [{
         ans2: "Expecto Patronum",
         ans3: "Obliviate",
         correctAnswer: "expectoPatronum",
+        displayAnswer: "Expecto Patronum",
         gif: "assets/gif/expecto-patronum.gif"},
 {
     question: "Where did the students from the Durmstrang Institute stay during the Tri-Wizard Tournament?",
@@ -59,8 +64,49 @@ var qAndA = [{
         ans2: "In a boat on the lake",
         ans3: "In the Hogwarts dormatories",
         correctAnswer: "inABoatOnTheLake",
-        gif: "assets/gif/durmstrang-boat.gif"
-}];
+        displayAnswer: "In a boat on the lake",
+        gif: "assets/gif/durmstrang-boat.gif"},
+{
+    question: "Who received an award for special services to the school, fif ty years before Harry attended Hogwarts?",
+        ans1: "Rufus Scrimgeour",
+        ans2: "Tom Riddle",
+        ans3: "Rubeus Hagrid",
+        correctAnswer: "tomRiddle",
+        displayAnswer: "Tom Riddle",
+        gif: "assets/gif/tomRiddle.gif"},
+{
+    question: "Which spell opens the secret passage to Honeydukes, behind the statue of the one-eyed witch?",
+        ans1: "Dissendio",
+        ans2: "Dissendia",
+        ans3: "Dissendium",
+        correctAnswer: "dissendium",
+        displayAnswer: "Dissendium",
+        gif: "assets/gif/honeydukes.gif"},
+{
+    question: "Who was the first student in Harry's year to be sorted into Gryffindor?",
+        ans1: "Lavender Brown",
+        ans2: "Hannah Abbott",
+        ans3: "Susan Bones",
+        correctAnswer: "lavenderBrown",
+        displayAnswer: "Lavender Brown",
+        gif: "assets/gif/lav.gif"},
+{
+    question: "Where in the Hogwarts grounds is Hagrid's hut located?",
+        ans1: "Next door to the greenhouses",
+        ans2: "Next to Hogsmeade Station",
+        ans3: "On the edge of the Forbidden Forest",
+        correctAnswer: "onTheEdgeOfTheForbiddenForest",
+        displayAnswer: "On the edge of the Forbidden Forest",
+        gif: "assets/gif/hagridshut.gif"},
+{
+    question: "How many known secret passages lead from Hogwarts to Hogsmeade?",
+        ans1: "6",
+        ans2: "7",
+        ans3: "8",
+        correctAnswer: "7",
+        displayAnswer: "7",
+        gif: "assets/gif/secretpassage.gif"},
+];
 
 var quizLength = qAndA.length;
 
@@ -100,9 +146,16 @@ var gameTimer = new Countdown({
         console.log(sec); $("#timerDisplay").html("00:" + sec);
     }, // callback for each second
     onCounterEnd: function(){ 
+        $("#ans1").prop("disabled", true);
+        $("#ans2").prop("disabled", true);
+        $("#ans3").prop("disabled", true);
         console.log("Time's up!");
+        unansweredQuestions.push(randomQuestion.correctAnswer);
+        console.log(unansweredQuestions);
         $("#resultsDisplay").html("<h1>Time's Up!</h1>");
-        setTimeout(getQuestion, 3000);
+        console.log(incorrectGuesses);
+        $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h1>");
+        setTimeout(getQuestion, 5000);
     } // final action
 });
 
@@ -114,7 +167,7 @@ function getQuestion() {
         var questionIndex = Math.floor(Math.random()*qAndA.length)
         randomQuestion = qAndA[questionIndex];
         // Start countdown
-        // gameTimer.start();
+        gameTimer.start();
         console.log(randomQuestion.question);
         console.log(randomQuestion.ans1);
         console.log(randomQuestion.ans2);
@@ -173,11 +226,11 @@ function gameOver() {
     $("#resultsPercentageDisplay").html("<h3>You scored a " + percentCorrect +"% on this quiz!</h3>");
     $("#numberCorrect").html("<h2>Correct: " + correctGuesses.length + "</h2>");
     $("#numberIncorrect").html("<h2>Incorrect: " + incorrectGuesses.length + "</h2>");
+    $("#numberUnanswered").html("<h2>Unanswered: " + unansweredQuestions.length + "</h2>");
     $("#replayBtn").show();
     // setTimeout(newGame, 5000);
 }
 // TODO: How do I get it so that the unCamelize feature does correct phrase casing ("Hello world" and not "Hello World")
-// TODO: How do I get a 'pause' feature on the game for when a selection has been made?  To prevent multiple choices?
 
 // Game Starts Here 
 $(document).ready(function() {
@@ -186,6 +239,7 @@ $(document).ready(function() {
             userGuess = $(this).attr("data-answer");
             if(playGame = true) { // This is in attempt to stop multiple guesses
                 if(userGuess==randomQuestion.correctAnswer) {
+                    // Disable guess buttons
                     $("#ans1").prop("disabled", true);
                     $("#ans2").prop("disabled", true);
                     $("#ans3").prop("disabled", true);
@@ -205,7 +259,7 @@ $(document).ready(function() {
                     gameTimer.stop();
                     incorrectGuesses.push(userGuess);
                     console.log(incorrectGuesses);
-                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + unCamelize(randomQuestion.correctAnswer) + "</h1>");
+                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h1>");
                     setTimeout(getQuestion, 3000);
                 };
             };
