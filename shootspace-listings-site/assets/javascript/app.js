@@ -3,8 +3,10 @@ $( document ).ready(function() {
     $("#citySearch").on("click", function() {
         var siteConstant = "https://listings.shootspace.io/?q="
         var userSearch = $("#citySearchInput").val();
+        userSearch = userSearch.replace(new RegExp(" "),'+')
+        console.log(userSearch)
         window.location.replace(siteConstant + userSearch);
-        // Site currently reloads upon click...
         console.log(siteConstant + userSearch);
     })
 });
+
