@@ -1,22 +1,59 @@
 .answer {
-    padding: 5px 15px 5px 15px;
     border: 1px solid black;
 }
 
 #answerChoices {
     display: none;
-    margin: 25px;
 }
 
-#question {
+#headerTagline {
     margin: 25px;
+    color: whitesmoke;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 0 0 50px rgba(0,0,0);
 }
 
-p,
 h1 {
     margin: 25px;
+    color: whitesmoke;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 0 0 50px rgba(0,0,0);
+}
+
+h2,
+h3 {
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
 }
 
 #replayBtn {
     display: none;
+}
+
+#jumbotronImage {
+    background-image: url("../images/hogwarts-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+#startBtn,
+.qBtn,
+#replayBtn {
+    color: black;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#startBtn:hover,
+.qBtn:hover,
+#replayBtn {
+    color: goldenrod;
+    border: none;
+    background-color: maroon;
 }

@@ -67,7 +67,7 @@ var qAndA = [{
         displayAnswer: "In a boat on the lake",
         gif: "assets/gif/durmstrang-boat.gif"},
 {
-    question: "Who received an award for special services to the school, fif ty years before Harry attended Hogwarts?",
+    question: "Who received an award for special services to the school, fifty years before Harry attended Hogwarts?",
         ans1: "Rufus Scrimgeour",
         ans2: "Tom Riddle",
         ans3: "Rubeus Hagrid",
@@ -143,7 +143,7 @@ function Countdown(options) {
 var gameTimer = new Countdown({  
     seconds:10,  // number of seconds to count down
     onUpdateStatus: function(sec) {
-        console.log(sec); $("#timerDisplay").html("00:" + sec);
+        console.log(sec); $("#timerDisplay").html("<p>" + sec + " seconds left</p>");
     }, // callback for each second
     onCounterEnd: function(){ 
         $("#ans1").prop("disabled", true);
@@ -152,9 +152,9 @@ var gameTimer = new Countdown({
         console.log("Time's up!");
         unansweredQuestions.push(randomQuestion.correctAnswer);
         console.log(unansweredQuestions);
-        $("#resultsDisplay").html("<h1>Time's Up!</h1>");
+        $("#resultsDisplay").html("<h2>Time's Up!</h2>");
         console.log(incorrectGuesses);
-        $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h1>");
+        $("#resultsDisplay").html("<h2>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h2>");
         setTimeout(getQuestion, 5000);
     } // final action
 });
@@ -173,7 +173,7 @@ function getQuestion() {
         console.log(randomQuestion.ans2);
         console.log(randomQuestion.ans3);
         // Display the question
-        $("#question").html(randomQuestion.question);
+        $("#question").html("<h2>" + randomQuestion.question + "</h2>");
         // Display the answers in the button divs
         console.log($("#ans1"))
         $("#ans1").html(randomQuestion.ans1);
@@ -220,10 +220,10 @@ function gameOver() {
     $("#timerDisplay").hide();
     $("#gifDisplay").hide();
     // Display the quiz results
-    $("#resultsDisplay").html("Your Results");
+    $("#resultsDisplay").html("<h2>Your Results</h2>");
     var percentCorrect = (correctGuesses.length/quizLength) * 100;
     console.log(percentCorrect)
-    $("#resultsPercentageDisplay").html("<h3>You scored a " + percentCorrect +"% on this quiz!</h3>");
+    $("#resultsPercentageDisplay").html("<h3>You scored " + percentCorrect +"% on this quiz!</h3>");
     $("#numberCorrect").html("<h2>Correct: " + correctGuesses.length + "</h2>");
     $("#numberIncorrect").html("<h2>Incorrect: " + incorrectGuesses.length + "</h2>");
     $("#numberUnanswered").html("<h2>Unanswered: " + unansweredQuestions.length + "</h2>");
@@ -247,7 +247,7 @@ $(document).ready(function() {
                     gameTimer.stop();
                     correctGuesses.push(userGuess);
                     console.log(correctGuesses);
-                    $("#resultsDisplay").html("<h1>Correct!</h1>");
+                    $("#resultsDisplay").html("<h2>Correct!</h2>");
                     $("#gifDisplay").html("<img src=" + randomQuestion.gif + ">");
                     setTimeout(getQuestion, 3000);
                 }
@@ -259,7 +259,8 @@ $(document).ready(function() {
                     gameTimer.stop();
                     incorrectGuesses.push(userGuess);
                     console.log(incorrectGuesses);
-                    $("#resultsDisplay").html("<h1>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h1>");
+                    $("#resultsDisplay").html("<h2>Incorrect! The correct answer was:<br/>" + randomQuestion.displayAnswer + "</h2>");
+                    $("#gifDisplay").html("<img src=" + randomQuestion.gif + ">");
                     setTimeout(getQuestion, 3000);
                 };
             };

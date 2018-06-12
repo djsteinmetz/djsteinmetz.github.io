@@ -20,16 +20,17 @@
     <title>Harry Potter Trivia</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container text-center">
+    <div class="jumbotron jumbotron-fluid text-center" id="jumbotronImage">
+        <div class="container text-center" id="headerCopy">
             <h1 class="display-4">Harry Potter Trivia</h1>
-            <p class="lead">Test your knowledge of all things Hogwarts and Harry Potter.</p>
+            <p class="lead" id="headerTagline">Test your knowledge of all things Hogwarts and Harry Potter.</p>
         </div>
         <div class="container text-center">
             <button class='btn btn-outline-secondary' id="startBtn">BEGIN</button>
-            <div id="timerDisplay"></div>
         </div>
-        <div class="container">
+    </div>
+
+    <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center" id="question"></div>
             </div>
@@ -37,6 +38,9 @@
 
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <div id="timerDisplay"></div>
+                </div>
                 <div class="col-md-12 text-center" id="answerChoices">
                     <button type="button" class="btn btn-outline-secondary qBtn" id="ans1"></button>
                     <button type="button" class="btn btn-outline-secondary qBtn" id="ans2"></button>
@@ -53,8 +57,8 @@
                 <div class="col-md-12" id="resultsPercentageDisplay"></div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-outline-secondary" id="replayBtn">Replay</button>
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-outline-secondary text-center" id="replayBtn">Replay</button>
                 </div>
             </div>
 
