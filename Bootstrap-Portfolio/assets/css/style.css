@@ -91,6 +91,10 @@ body {
     background-image: url(../images/cruxGame.jpg);
 }
 
+#potterTrivia {
+    background-image: url(../images/potterTrivia.jpg);
+}
+
 .portfolioBox:hover {
     cursor: pointer;
 }
