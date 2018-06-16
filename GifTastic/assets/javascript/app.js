@@ -65,20 +65,56 @@ $(document).on("click", ".gifBtn", function() {
           var gifDiv = $("<div class='item'>");
           var rating = results[i].rating;
             if(rating !== "r") {
-            var p = $("<p>").text("Rating: " + rating);
-            var personImage = $("<img>");
-            personImage.attr("src", results[i].images.fixed_height.url);
-            gifDiv.prepend(p);
-            gifDiv.prepend(personImage);
-            $("#potterGifs").prepend(gifDiv);
+                var p = $("<p>").text("Rating: " + rating);
+                var personImage = $("<img>");
+                personImage.attr("gif-still", results[i].images.fixed_height_small_still.url);
+                personImage.attr("gif-animate", results[i].images.fixed_height_small.url);
+                var still = personImage.attr("gif-still");
+                var animate = personImage.attr("gif-animate");
+                personImage.attr("src", still);
+                gifDiv.prepend(p);
+                gifDiv.prepend(personImage);
+                $("#potterGifs").prepend(gifDiv);
             };
+        // add .on("click") to change src to either gif-still or gif-animate
+
         };
 
     });
+
 });
 
 // Add the .on("click") here for animating the gis?
   
 $(document).ready(function() {
-    initialDisplay(); 
+    initialDisplay();
+});
+
+// Hover function to change to animated gif
+// $(function() {
+//     $("img").each(function(e){
+//         var src = $(e).attr("src");
+//         $(e).hover(function() {
+//             $(this).attr("src"), src.replace(still, animate));
+//         }, function() {
+//             $(this).attr("src", src);
+//         });
+//     }); 
+// });
+
+//TODO: Look at this 
+$(document).on('click', 'img', function(event) {
+    console.log('inside img click handler')
+    var animatedSrc = $(event.target).attr('gif-animate')
+    var stillSrc = $(event.target).attr('gif-still')
+    var currentSrc = $(event.target).attr('src')
+    if (currentSrc === stillSrc) {
+      $(event.target).attr('src', animatedSrc)
+    } else {
+      $(event.target).attr('src', stillSrc)
+    }
+});
+
+$("#potterGifs").on("click", function(event) {
+    console.log(event);
 });
