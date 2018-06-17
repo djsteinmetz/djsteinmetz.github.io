@@ -4,20 +4,19 @@ var userInput;
 var btnDisplay = $("#potterBtnDisplay");
 var newPotterBtn = $("<button>");
 var characterCount = 0;
-
+// Function to create new buttons with parameters "name" and "count"
 function newBtn(name, count) {
     var newDisplayBtn = $("<button>")
     newDisplayBtn.append("" + name)
         .addClass("btn btn-outline-dark btn-sm gifBtn")
         .attr("data-character", name)
         .attr("id", "item-" + count);
-
+    // Append those new buttons to the button display section of HTML
     btnDisplay.append(newDisplayBtn);
-    console.log(newDisplayBtn);
     characterCount++;
 };
 
-// Initial display of buttons
+// Function to create new buttons for the characters pre-defined in the 'topics' array
 function initialDisplay() {
     for(var i=0; i<topics.length; i++) {
         newBtn(topics[i], characterCount);
@@ -29,27 +28,28 @@ $("#submitBtn").on("click", function(event) {
     event.preventDefault();
     // Capture the value of the user's character input
     userInput = $("#userCharacterInput").val()
-    // newBtn(topics, characterCount)
-    // Replace the below with a method
+    // create new buttons from the search - *this could probably be replaced with a method*
     newPotterBtn = $("<button>")
         .attr("data-character", userInput)
         .addClass("btn btn-outline-dark btn-sm gifBtn")
         .attr("id", "item-" + characterCount)
         .append(userInput);
-
+    // Append the new buttons to the button display in the HTML
     btnDisplay.append(newPotterBtn);
     $("#userCharacterInput").val("");
+    // Push the user character search to the 'topics' array
     topics.push(userInput);
-    console.log(topics);
+    // Increase the character count
     characterCount++;
 });
-
-// Set different class for submit buttons
-// Can you specify "data-character" button?
+// Click listener for each gifBtn
 $(document).on("click", ".gifBtn", function() {
+    // Reset the gif display
     $("#potterGifs").html("");
+    // Declare charaacter as the data-character attribut on the button
     var character = $(this).attr("data-character");
     console.log(character);
+    // Query the API for 50 gifs inluding the character search 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
       character + "&api_key=dc6zaTOxFJmzC&limit=50";
 
@@ -59,8 +59,7 @@ $(document).on("click", ".gifBtn", function() {
     })
     .then(function(response) {
         var results = response.data;
-        console.log(results);
-
+        // Loop through 10 times
         for (var i = 0; i < 10; i++) {
           var gifDiv = $("<div class='item'>");
           var rating = results[i].rating;
@@ -76,35 +75,15 @@ $(document).on("click", ".gifBtn", function() {
                 gifDiv.prepend(personImage);
                 $("#potterGifs").prepend(gifDiv);
             };
-        // add .on("click") to change src to either gif-still or gif-animate
-
         };
-
     });
-
 });
-
-// Add the .on("click") here for animating the gis?
-  
+// Run the 'initial display' function
 $(document).ready(function() {
     initialDisplay();
 });
-
-// Hover function to change to animated gif
-// $(function() {
-//     $("img").each(function(e){
-//         var src = $(e).attr("src");
-//         $(e).hover(function() {
-//             $(this).attr("src"), src.replace(still, animate));
-//         }, function() {
-//             $(this).attr("src", src);
-//         });
-//     }); 
-// });
-
-//TODO: Look at this 
+// Toggle animation on/off
 $(document).on('click', 'img', function(event) {
-    console.log('inside img click handler')
     var animatedSrc = $(event.target).attr('gif-animate')
     var stillSrc = $(event.target).attr('gif-still')
     var currentSrc = $(event.target).attr('src')
@@ -113,8 +92,4 @@ $(document).on('click', 'img', function(event) {
     } else {
       $(event.target).attr('src', stillSrc)
     }
-});
-
-$("#potterGifs").on("click", function(event) {
-    console.log(event);
 });

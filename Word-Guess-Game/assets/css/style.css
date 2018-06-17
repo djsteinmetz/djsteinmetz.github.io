@@ -53,3 +53,7 @@ body {
     padding-top: 25px;
     font-size: 30px;
 }
+
+#gifDisplay {
+    margin-bottom: 25px;
+}
