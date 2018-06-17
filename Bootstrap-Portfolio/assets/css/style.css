@@ -95,6 +95,10 @@ body {
     background-image: url(../images/potterTrivia.jpg);
 }
 
+#potterGifs {
+    background-image: url(../images/gif.png)
+}
+
 .portfolioBox:hover {
     cursor: pointer;
 }
