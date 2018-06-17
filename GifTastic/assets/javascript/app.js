@@ -6,7 +6,7 @@ var newPotterBtn = $("<button>");
 var characterCount = 0;
 // Function to create new buttons with parameters "name" and "count"
 function newBtn(name, count) {
-    var newDisplayBtn = $("<button>")
+    var newDisplayBtn = $("<button>");
     newDisplayBtn.append("" + name)
         .addClass("btn btn-outline-dark btn-sm gifBtn")
         .attr("data-character", name)
@@ -15,14 +15,12 @@ function newBtn(name, count) {
     btnDisplay.append(newDisplayBtn);
     characterCount++;
 };
-
 // Function to create new buttons for the characters pre-defined in the 'topics' array
 function initialDisplay() {
     for(var i=0; i<topics.length; i++) {
         newBtn(topics[i], characterCount);
     };
 };
-
 // On click of 'submit' button
 $("#submitBtn").on("click", function(event) {
     event.preventDefault();
@@ -48,7 +46,6 @@ $(document).on("click", ".gifBtn", function() {
     $("#potterGifs").html("");
     // Declare charaacter as the data-character attribut on the button
     var character = $(this).attr("data-character");
-    console.log(character);
     // Query the API for 50 gifs inluding the character search 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
       character + "&api_key=dc6zaTOxFJmzC&limit=50";
@@ -59,19 +56,28 @@ $(document).on("click", ".gifBtn", function() {
     })
     .then(function(response) {
         var results = response.data;
+        console.log(results);
         // Loop through 10 times
         for (var i = 0; i < 10; i++) {
-          var gifDiv = $("<div class='item'>");
+          var gifDiv = $("<div class='card'>");
           var rating = results[i].rating;
+          var title = results[i].title.toUpperCase();
+          var source = results[i].source_tld;
+
+            // Only populate gifs if they are *not* R rated
             if(rating !== "r") {
-                var p = $("<p>").text("Rating: " + rating);
-                var personImage = $("<img>");
+                var div = $("<div class='card-body'>").html("<h5 class='card-title'>" + title + '</h5>');
+                var ul = $("<ul class='list-group list-group-flush'>");
+                var personImage = $("<img class='card-img-top' alt='Card image cap'>");
                 personImage.attr("gif-still", results[i].images.fixed_height_small_still.url);
                 personImage.attr("gif-animate", results[i].images.fixed_height_small.url);
                 var still = personImage.attr("gif-still");
                 var animate = personImage.attr("gif-animate");
+                gifDiv.append(ul);
+                ul.append("<li class='list-group-item'><strong>Source:</strong> " + source + "<br/>")
+                div.append("<h6>Rating: " + rating + "</h6>")
                 personImage.attr("src", still);
-                gifDiv.prepend(p);
+                gifDiv.prepend(div);
                 gifDiv.prepend(personImage);
                 $("#potterGifs").prepend(gifDiv);
             };
