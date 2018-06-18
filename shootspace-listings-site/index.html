@@ -18,7 +18,9 @@
 <body>
   <!-- NAVIGATION BAR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">
+      <img id="shootspaceLogo" src="assets/images/SS-logo-black-p-800.png" alt="shootspace">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,19 +30,16 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Explore Cities
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Minneapolis, MN</a>
+            <a class="dropdown-item" href="#minneapolisStudio">Minneapolis, MN</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">St. Paul, MN</a>
+            <a class="dropdown-item" href="#newYorkStudio">New York, NY</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">San Diego, CA</a>
+            <a class="dropdown-item" href="#losAngelesStudio">Los Angeles, CA</a>
           </div>
         </li>
       </ul>
@@ -58,37 +57,30 @@
       <p class="lead">The Largest Collection Of On-demand Photo Studio Rentals.</p>
     </div>
   </div>
-
+  <!-- Explore Studios -->  
   <div class="container">
-    <!-- Explore Studios -->
     <div class="row">
       <div class="col-md-12">
         <h2>Explore Studios</h2><br/>
         <h3>Find studios in your city, or explore unique studios around the world.</h3>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <p class="cityImages" id="minneapolisStudio">Minneapolis</p>
-      </div>
-      <div class="col-md-4">
-        <img class="cityImages" src="http://via.placeholder.com/300x300" alt="placeholder">
+    <div class="row topRow">
+      <div class="col-md-12 cityImages">
+        <p class="exploreStudiosCity" id="minneapolisStudio">Minneapolis, MN</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <img class="cityImages" src="http://via.placeholder.com/300x300" alt="placeholder">
+      <div class="col-md-8 cityImages">
+        <p class="exploreStudiosCity" id="newYorkStudio">New York, NY</p>
       </div>
-      <div class="col-md-4">
-        <img class="cityImages" src="http://via.placeholder.com/300x300" alt="placeholder">
-      </div>
-      <div class="col-md-4">
-        <img class="cityImages" src="http://via.placeholder.com/300x300" alt="placeholder">
+      <div class="col-md-4 cityImages">
+        <p class="exploreStudiosCity" id="losAngelesStudio">Los Angeles, CA</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <h2>Featured Studios</h2>
+        <h2 id="featuredStudiosHeader">Featured Studios</h2>
       </div>
     </div>
     <div class="row">
