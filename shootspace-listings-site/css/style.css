@@ -149,7 +149,8 @@ nav {
 }
 
 @media screen and (max-width: 767px) {
-    #losAngelesStudio {
+    #losAngelesStudio,
+    #losAngelesStudio:hover {
         margin-top: 25px;
     }
 
