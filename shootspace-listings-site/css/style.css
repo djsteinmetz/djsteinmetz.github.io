@@ -151,7 +151,44 @@ nav {
 @media screen and (max-width: 767px) {
     #losAngelesStudio,
     #losAngelesStudio:hover {
+        padding: 150px 0px 150px 0px;
         margin-top: 25px;
+        background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.5)), url("../assets/images/aerial-architectural-design-architecture-1036657.jpg");
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #newYorkStudio,
+    #newYorkStudio:hover {
+        padding: 150px 0px 150px 0px;
+        /* Background image with black gradient from bottom */
+        background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.5)), url("../assets/images/building-cc0-city-89485.jpg");
+        /* Regular background with no effects */
+        /* background-image: url("../assets/images/IMG_0023.jpg"); */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0px;
+    }
+
+    #minneapolisStudio,
+    #minneapolisStudio:hover {
+        padding: 150px 0px 150px 0px;
+        /* Background image with black gradient from bottom */
+        background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.5)), url("../assets/images/215-10th-Ave-S-736-Twilight-002.jpg");
+        /* Regular background with no effects */
+        /* background-image: url("../assets/images/IMG_0023.jpg"); */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0px;
     }
 
     #featuredStudiosHeader {
