@@ -1,8 +1,3 @@
-.btn-light {
-    border: 1px solid black;
-    border-radius: 50px;
-}
-
 h1,
 p {
     text-align: center;
@@ -13,19 +8,16 @@ h1 {
     font-family: 'Lato', sans-serif;
 }
 
-h2,
-h3 {
-    text-align: center;
-}
-
 h2 {
     font-size: 45px;
     font-family: 'Lato', sans-serif;
+    text-align: center;
 }
 
 h3 {
     font-size: 20px;
     font-family: 'Varela Round', sans-serif;
+    text-align: center;
 }
 
 h4 {
@@ -45,13 +37,12 @@ p {
     font-family: 'Varela Round', sans-serif;
 }
 
-.exploreStudiosCity {
-    font-size: 25px;
+#faqContainer {
+    margin-bottom: 25px;
 }
 
-.btn-light {
-    border: 1px solid black;
-    border-radius: 50px;
+.exploreStudiosCity {
+    font-size: 25px;
 }
 
 nav {
@@ -76,7 +67,12 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0px 0px 100px 0px;
+    margin: 0px 0px 66px 0px;
+}
+
+#footer {
+    margin: 0px;
+    min-width: 100%;
 }
 
 .topRow {
@@ -216,4 +212,11 @@ nav {
     #featuredStudiosHeader {
         margin-top: 25px;
     }
-} 
+}
+
+@media screen and (max-width: 575px) {
+    h4,
+    h5 {
+        padding: 0px 20px 0px 20px;
+    }
+}
