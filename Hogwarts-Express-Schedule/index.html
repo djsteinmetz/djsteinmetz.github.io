@@ -17,12 +17,14 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto+Condensed" rel="stylesheet">
+    <!-- Firebase Database -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- App Javascript -->
     <script src="assets/javascript/app.js"></script>
-    <!-- Firebase Database -->
-    <script src="https://www.gstatic.com/firebasejs/5.0./firebase.js"></script>
 </head>
 
 <body>
@@ -33,7 +35,7 @@
     </div>
     <div class="container">
         <!-- Most Recent Member Card -->
-        <div class="row" id="trainSchedule">
+        <!-- <div class="row" id="trainSchedule">
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-heading">
@@ -55,8 +57,26 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
+        <div class="row">
+            <div class="col-sm-12 trainSchedule">
+                <h3>Current Trains</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="row">
 
             <!-- Sign-Up Card-->
@@ -84,7 +104,7 @@
                             <label for="frequency-input">Frequency (in minutes):</label>
                             <input class="form-control" id="frequency-input" type="number">
                         </div>
-                        <button class="btn btn-light" id="add-train">Submit</button>
+                        <button class="btn btn-outline-dark" id="add-train">Submit</button>
                     </div>
                 </div>
             </div>
