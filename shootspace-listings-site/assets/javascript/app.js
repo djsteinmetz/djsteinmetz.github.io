@@ -8,5 +8,20 @@ $( document ).ready(function() {
         window.location.replace(siteConstant + userSearch);
         console.log(siteConstant + userSearch);
     })
+
+    // Hover Effect
+        // $(".card").hover(
+        //     function(){ 
+        //         $(this).animate({
+        //             marginTop: "-=1%",
+        //         }, 200);
+        //     },
+
+        //     function() {
+        //         $(this).animate({
+        //             marginTop: "8%"
+        //         }, 200);
+        //     },
+        // );
 });
 

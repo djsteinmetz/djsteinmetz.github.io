@@ -166,6 +166,21 @@ nav {
     margin: 0px;
 }
 
+.card,
+.card-title {
+    margin: 8% 0% 8% 0%;
+}
+.card:hover {
+	-webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+	-mox-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+	box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+
+.subscriptionItem {
+    text-align: left;
+    margin: 25px;
+}
+
 @media screen and (max-width: 767px) {
     #losAngelesStudio,
     #losAngelesStudio:hover {
@@ -213,6 +228,7 @@ nav {
         margin-top: 25px;
     }
 }
+
 
 @media screen and (max-width: 575px) {
     h4,
