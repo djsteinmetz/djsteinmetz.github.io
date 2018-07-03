@@ -9,20 +9,22 @@ $(document).ready(function () {
         console.log(siteConstant + userSearch);
     })
 
-    // //Hover Effect
-    // $(".card").hover(
-    //     function(){ 
-    //         $(this).animate({
-    //             marginTop: "-=1%",
-    //         }, 200);
-    //     },
+    //Hover Effect
+    $(".card").hover(
+        function(){ 
+            $(this).animate({
+                marginTop: "-=1%",
+                marginBottom: "+=1%",
+            }, 250);
+        },
 
-    //     function() {
-    //         $(this).animate({
-    //             marginTop: "8%"
-    //         }, 200);
-    //     },
-    // );
+        function() {
+            $(this).animate({
+                marginTop: "8%",
+                marginBottom: "8%",
+            }, 250);
+        },
+    );
 
     // Pricing as follows:
     // SEMI-ANNUAL: 23/month, billed every 6mo. (save 20%)
@@ -40,6 +42,7 @@ $(document).ready(function () {
                 $("#switchToAnnual").html('> Switch to Monthly Billing')
                     .addClass("switchBilling")
                     .attr("id", "switchToMonthly");
+                $("#basicBtn").attr("href", "##");
                 break;
 
             case "switchToMonthly":
@@ -49,6 +52,7 @@ $(document).ready(function () {
                 $("#switchToMonthly").html('> Switch to Semi-Annual Billing')
                     .addClass("switchBilling")
                     .attr("id", "switchToSemiAnnual");
+                $("#basicBtn").attr("href", "###");
                 break;
             
             case "switchToSemiAnnual":
@@ -58,6 +62,7 @@ $(document).ready(function () {
             $("#switchToSemiAnnual").html('> Switch to Annual Billing')
                 .addClass("switchBilling")
                 .attr("id", "switchToAnnual");
+            $("#basicBtn").attr("href", "#");
             break;
         };
     });

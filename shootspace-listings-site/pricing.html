@@ -70,17 +70,19 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body cardHead">
                         <h3 class="card-title">BASIC</h3>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <div class="card-body text-center">
-                        <div class="card-text" id="basicSemiAnnualPrice"><h2>$23/month</h2><h6>Semi-Annual</br>Billed every 6mo - save 20%</h6></div>
+                    <div class="card-body cardMain text-center">
+                        <div class="card-text" id="basicSemiAnnualPrice">
+                            <h2>$23/month</h2><h6>Semi-Annual</br>Billed every 6mo - save 20%</h6>
+                        </div>
                         <div class="dropdown-divider"></div>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;One Studio Listing</h5>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Booking Tools</h5>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Artist Messaging System</h5>
-                        <a href="#"  class="btn btn-lg btn-info">GET BASIC NOW</a>
+                        <a href="#"  class="btn btn-lg btn-info" id="basicBtn">GET BASIC NOW</a>
                         <div class="dropdown-divider"></div>
                         <h5 class="switchBilling" id="switchToAnnual">> Switch to Annual Billing</a></h5>
                     </div>
@@ -88,11 +90,11 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body cardHead">
                         <h3 class="card-title">PREMIUM</h3>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <div class="card-body text-center">
+                    <div class="card-body cardMain text-center">
                         <h2 class="card-text" id="premiumSemiAnnualPrice">$159/month</h2>
                         <div class="dropdown-divider"></div>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Multiple Studio Listings</h5>
@@ -100,7 +102,7 @@
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Email Marketing Reach</h5>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Social Media Reach</h5>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;VIP Service &amp; Support</h5>
-                        <a href="#"  class="btn btn-lg btn-info">GET PREMIUM NOW</a>
+                        <a href="#"  class="btn btn-lg btn-info" id="premiumBtn">GET PREMIUM NOW</a>
                         <div class="dropdown-divider"></div>
                         <h5 class="switchBilling" id="premiumMonthlyBilling">> Switch to Annual Billing</a></h5>
                     </div>
@@ -108,11 +110,11 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body cardHead">
                         <h3 class="card-title">CUSTOM</h3>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <div class="card-body text-center">
+                    <div class="card-body cardMain text-center">
                         <h2 class="card-text">Contact Us</h2>
                         <div class="dropdown-divider"></div>
                         <h5 class="subscriptionItem"><i class="fas fa-check"></i>&nbsp;Premium Features</h5>
@@ -126,7 +128,7 @@
     </div>
     
     
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" id="footer">
         <div class="btn-group dropup">
             <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Site Map</button>
             <div class="dropdown-menu">
@@ -140,7 +142,7 @@
             </div>
         </div>
         <h5>
-            </br>&COPY;Copyright ShootSpace 2018</h5>
+            </br>&COPY;ShootSpace 2018</h5>
     </nav>
 
     <!-- Bootstrap CSS -->
