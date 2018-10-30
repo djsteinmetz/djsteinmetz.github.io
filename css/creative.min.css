@@ -94,6 +94,7 @@ section {
 
 #myImage {
     max-width: 300px;
+    border-radius: 180px;
 }
 
 ::-moz-selection {
