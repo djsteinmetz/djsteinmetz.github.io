@@ -2,8 +2,14 @@ body {
     font-family: 'Gothic A1', sans-serif;
     color: #70565F;
 }
+.name {
+    font-size: 4rem;
+}
 .bg-primary {
     background-color: white !important;
+}
+.text-muted {
+    color: rgb(190, 169, 176) !important; 
 }
 .footer {
     height: 10rem;
@@ -22,7 +28,7 @@ body {
     z-index: 12;
 }
 h1 {
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
     font-weight: 900 !important; 
 }
 .li {
